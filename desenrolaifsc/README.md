@@ -48,3 +48,16 @@ Cada classe tem uma única responsabilidade, de acordo com o Princípios SOLID d
 Recomenda-se seguir essa estrutura de pacotes e arquivos para manter a consistência do código, fazendo com que o código seja mais fácil de ler e manter.
 
 Para criar novos arquivos nessa estrutura, você pode simplesmente adicionar novos arquivos `.java` aos diretórios apropriados (model, repository, service, controller) e seguir a convenção de nomes descrita acima.
+
+### Fluxo de desenvolvimento
+
+1. `Model`: Começa-se criando o objeto `AuthUser`, um POJO que irá representar o usuário durante a fase de autenticação. Conterá as informações necessárias para a autenticação, como o `username` e `password`.
+
+2. `Repository`: A próxima etapa é a `AuthUserRepository`, que é a interface que define as operações de banco de dados para o objeto `AuthUser`, estendendo as operações básicas do `JpaRepository` sem necessidade de implementação desnecessária dos métodos básicos de CRUD.
+
+3. `Service`: `AuthUserService` é a camada onde a lógica de negócios é implementada, e é criada após o `Repository`. É o lugar onde as senhas do usuário são criptografadas antes de serem salvas no banco de dados e onde a lógica de autenticação e registro de usuário é implementada.
+
+4. `Controller`: Finalmente, cria-se o `AuthUserController`. O controlador é o ponto de entrada HTTP da nossa aplicação, onde as solicitações HTTP são recebidas e manipuladas.
+
+
+Esses são os passos a serem seguidos para criação de endpoint, desde sua concepção com a estruturação do model, seguindo com a criação da interface, após implementado a logica de negócio, e finalmente criando o ponto de conexão http
